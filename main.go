@@ -18,7 +18,7 @@ func contact(w http.ResponseWriter, r *http.Request) {
 }
 
 func faq(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type"), "text/html")
+	w.Header().Set("Content-Type", "text/html")
 	fmt.Fprint(w, "<h2>FAQ</h2>")
 }
 
