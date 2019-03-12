@@ -22,8 +22,15 @@ func faq(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "<h2>FAQ</h2>")
 }
 
+func notFound(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	w.WriteHeader(http.StatusNotFound)
+	fmt.Fprint(w, "<h2>Sorry page not found</h2>")
+}
+
 func main() {
 	r := mux.NewRouter()
+	r.NotFoundHandler = http.HandlerFunc(notFound)
 	r.HandleFunc("/", home)
 	r.HandleFunc("/contact", contact)
 	r.HandleFunc("/faq", faq)
